@@ -18,16 +18,11 @@ while True:
         temperature = dhtDevice.temperature
         humidity = dhtDevice.humidity
 
-        # print the measurements (if you need it)
-        # print(
-        #   "Temp: {:.1f} C    Humidity: {}% ".format(
-        #        temperature, humidity
-        #    )
-        # )
-
         write("humid", humidity)
         write("temp", temperature)
 
+        #print the measurements (if you need it)
+        print("Temp: {:.1f} C    Humidity: {}% ".format(temperature, humidity))
     except RuntimeError as error:
         # Errors happen fairly often, DHT's are hard to read, just keep going
         print(error.args[0])

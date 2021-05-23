@@ -4,7 +4,6 @@ import time
 import datetime
 import RPi.GPIO as GPIO
 from collections import deque
-from influxdb import InfluxDBClient
 from writeToDB import write
 
 # use GPIO.setmode(GPIO.BOARD) to use pin numbers
@@ -68,11 +67,11 @@ while True:
         # Calculate the radiation in micro Sieverts per hour,
         # write it to InfluxDB and reset the count
 
-        usvh = "{:.2f}".format(len(counts)*usvh_ratio)
+        usvh = float("{:.2f}".format(len(counts)*usvh_ratio))
         write("usvh", usvh)
 
         # print the measurements (if you need it)
-        # print(usvh)
+        print(usvh)
 
         loop_count = 0
 

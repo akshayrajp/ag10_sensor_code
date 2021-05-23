@@ -35,7 +35,7 @@ double *getLocation()
 		/*
 		   * Units of coordinates are either in DD (Decimal Degrees) (or) in DMS (Degrees, Minutes and Seconds)
 		   * Latitude - North or South of the Equator. If North, then the DD value is positive, otherwise negative.
-		   * Longitude - East or West of the Equator. If East, then the DD value is positive, otherwise negative.
+		   * Longitude - East or West of the Prime Meridian. If East, then the DD value is positive, otherwise negative.
 		*/
 
 		// return the coordinates to the calling function
