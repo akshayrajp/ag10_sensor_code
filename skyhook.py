@@ -15,9 +15,10 @@ while True:
     # store the coordinates array of type double returned by the function defined by getlocation.c as a list in result
     # and return it to the calling function
     result = getloc.getLocation()
-    print(result)
     write("Latitude", result[0])
     write("Longitude", result[1])
 
+    # print the values if you need to
+    print(f"Latitude : {result[0]}, Longitude : {result[1]}")
     time.sleep(300)
 

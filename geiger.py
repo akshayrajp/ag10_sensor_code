@@ -71,7 +71,7 @@ while True:
         write("usvh", usvh)
 
         # print the measurements (if you need it)
-        print(usvh)
+        print(f"{usvh} usvh")
 
         loop_count = 0
 
