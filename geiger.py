@@ -5,6 +5,7 @@ import datetime
 import RPi.GPIO as GPIO
 from collections import deque
 from writeToDB import write
+from alert import telegram_bot_sendtext
 
 # use GPIO.setmode(GPIO.BOARD) to use pin numbers
 GPIO.setmode(GPIO.BOARD)
@@ -15,6 +16,7 @@ GPIO.setwarnings(False)
 counts = deque()
 hundredcount = 0
 usvh_ratio = 0.00812037037037  # This is for the J305 tube
+threshold = 2.00 # Set threshold for alert texts
 
 # This method fires on edge detection (the pulse from the counter board)
 
@@ -69,6 +71,13 @@ while True:
 
         usvh = float("{:.2f}".format(len(counts)*usvh_ratio))
         write("usvh", usvh)
+
+        # Check if the usvh value exceeds threshold and if it does,
+        # send a telegram text
+
+        if(usvh >= threshold):
+            message = f"ALERT! RADIOACTIVITY HAS CROSSED THRESHOLD LIMITS! LAST VALUE : {usvh} μSv/hr" 
+            telegram_bot_sendtext(message)
 
         # print the measurements (if you need it)
         print(f"{usvh} usvh")
